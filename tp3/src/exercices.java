@@ -1,5 +1,6 @@
 
 import es.*;
+import Robot.*;
 import static java.lang.Math.*;
 
 public class exercices {
@@ -28,6 +29,7 @@ public class exercices {
         }
     }
 
+/*    // factorial(x)=x! pour l'exo
     public static int factorial(int n) {
         int fact = 1;
         for (int i = 1; i <= n; i++) {
@@ -35,42 +37,29 @@ public class exercices {
         }
         return fact;
     }
-
-    // sum to i
-    public static double Ttoi(double x, int i) {
-        double t = 0;
-        for (int n = 0; n <= i; n++) {
-            t = Ttoi(x, i - 1) + Math.pow(-1, i) * Math.pow(x, 2 * i + 1) / factorial(2 * i + 1);
-        }
-        return t;
-    }
-
-    // at i
-    public static double Tati(double x, int i) {
-        double t = 0;
-        for (int n = 0; n <= i; n++) {
-            t = Math.pow(-1, i) * Math.pow(x, 2 * i + 1) / factorial(2 * i + 1);
-        }
-        return t;
+  // soit il y a une erreur, soit la formule est fausse... Dans tous les cas la boucle for n'est pas executée sans un e très grand.
+    public static double T(double x, int i) {
+        return Math.pow(-1, i) * (Math.pow(x, 2 * i + 1) / factorial(2 * i + 1));
     }
 
     public static double ex331(double x, double e) {
-        double t = 0;
-        int i = 0;
-
-        do {
-            t = Ttoi(x, i - 1) + Math.pow(-1, i) * Math.pow(x, 2 * i + 1) / factorial(2 * i + 1);
-        } while (Math.abs(Tati(x, i)) <= e);
-
-        return t;
-
+        double n = 0;
+        for (int i = 0; Math.abs(T(x,i))<=e ;i++ ) {
+            n = T(x,i-1)+T(x,i);
+        }
+        return n;
     }
-
+*/
+    
+    public static void ex341(){
+        
+    }
+    
     public static void main(String[] args) {
         //  ex311();
         //  ex312();
-        //System.out.println(ex321(6));
-        System.out.println(Ttoi(2, 8));
-        System.out.println(ex331(2, 0.001));
+        //  System.out.println(ex321(6));
+        //  System.out.println(ex331(2, 0.001));
+        //  System.out.println(Math.sin(2));
     }
 }
