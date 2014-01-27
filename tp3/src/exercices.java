@@ -29,37 +29,40 @@ public class exercices {
         }
     }
 
-/*    // factorial(x)=x! pour l'exo
-    public static int factorial(int n) {
-        int fact = 1;
+    // factorial(x)=x! pour l'exo
+    public static long factorial(int n) {
+        long fact = 1;
         for (int i = 1; i <= n; i++) {
             fact *= i;
         }
         return fact;
     }
-  // soit il y a une erreur, soit la formule est fausse... Dans tous les cas la boucle for n'est pas executée sans un e très grand.
+
     public static double T(double x, int i) {
         return Math.pow(-1, i) * (Math.pow(x, 2 * i + 1) / factorial(2 * i + 1));
     }
 
     public static double ex331(double x, double e) {
         double n = 0;
-        for (int i = 0; Math.abs(T(x,i))<=e ;i++ ) {
-            n = T(x,i-1)+T(x,i);
-        }
+        double add;
+        int i = 0;
+        do {
+            add = T(x, i);
+            n += add;
+            i++;
+        } while (Math.abs(add) > e);
         return n;
     }
-*/
-    
-    public static void ex341(){
-        
+
+    public static void ex341() {
+
     }
-    
+
     public static void main(String[] args) {
-        //  ex311();
-        //  ex312();
-        //  System.out.println(ex321(6));
-        //  System.out.println(ex331(2, 0.001));
-        //  System.out.println(Math.sin(2));
+        //ex311();
+        //ex312();
+        //System.out.println(ex321(6));
+        //System.out.println("T(x=2,e=0.001) = " + ex331(2, 0.001));
+        //System.out.println("Sin(x=2) = " + Math.sin(0.5));
     }
 }
