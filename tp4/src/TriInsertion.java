@@ -63,65 +63,79 @@ public class TriInsertion {
         Robot.addBlock(1, 4, "?");
     }
 
-    public static void inserer(int n) {
+    public static void put(int from, int to) {
+        for (int i = 1; i < from; i++) {
+            Robot.moveRight();
+        }
         Robot.pickBlock();
-        int b = Robot.readBlock();
+        for (int i = 1; i < from; i++) {
+            Robot.moveLeft();
+        }
+        for (int i = 1; i < to; i++) {
+            Robot.moveRight();
+        }
         Robot.putBlock();
-        if (n >= b) {
-            Robot.moveRight();
-            Robot.pickBlock();
-            Robot.moveLeft();
-            Robot.putBlock();
-        } else {
-            while (n < b || !Robot.isEmptyColumn()) {
-                Robot.pickBlock();
-                b = Robot.readBlock();
-                Robot.moveRight();
-                Robot.moveRight();
-                Robot.putBlock();
-                Robot.moveLeft();
-                Robot.moveLeft();
-            }
-            Robot.moveRight();
-            Robot.pickBlock();
-            Robot.moveLeft();
-            Robot.putBlock();
-            Robot.moveRight();
-            Robot.moveRight();
-            while (!Robot.isEmptyColumn()){
-                Robot.pickBlock();
-                Robot.moveLeft();
-                Robot.moveLeft();
-                Robot.putBlock();
-                Robot.moveRight();
-                Robot.moveRight();
-            }
-            Robot.moveLeft();
+        for (int i = 1; i < to; i++) {
             Robot.moveLeft();
         }
     }
 
-    /**
-     * @param args
-     */
+    public static int read(int l) {
+        int a = -1;
+        for (int i = 1; i < l; i++) {
+            Robot.moveRight();
+        }
+        if (!Robot.isEmptyColumn()) {
+            Robot.pickBlock();
+            a = Robot.readBlock();
+            Robot.putBlock();
+        }
+        for (int i = 1; i < l; i++) {
+            Robot.moveLeft();
+        }
+        return a;
+    }
+
+    public static boolean empty(int l) {
+        for (int i = 1; i < l; i++) {
+            Robot.moveRight();
+        }
+        boolean a = Robot.isEmptyColumn();
+        for (int i = 1; i < l; i++) {
+            Robot.moveLeft();
+        }
+        return a;
+    }
+
+    public static void inserer(int n) {
+        int a;
+        while (!empty(2)) {
+            a = read(2);
+            if (empty(1) || read(1) <= a) {
+                put(2, 1);
+                while (!empty(3)) {
+                    put(3, 1);
+                }
+            } else {
+                put(1, 3);
+            }
+        }
+    }
+
     public static void main(String[] args) {
-        // décommentez une ligne à la fois pour tester différents états initiaux pour l'insertion		
+
         //testIntertion1();
         //testIntertion2();
-        testIntertion3();
+        //testIntertion3();
 
-        // test de l'algorithme d'insertion. Dans les données de tests, on cherche toujours
-        // à insérer le bloc dont le numéro est 2
-        // inserer(2);
-        // décommentez une ligne à la fois pour tester différents états initiaux pour le tri			
-        //testTri1();
+        testTri1();
         //testTri2()
         //testTri3();
         //testTri4();
         //testTri5();
-        // test de l'algorithme de tri insertion
+        
         inserer(2);
-
+        
         Robot.play();
     }
 
