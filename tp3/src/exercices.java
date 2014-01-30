@@ -7,7 +7,7 @@ public class exercices {
 
     public static void ex311() {
         for (int i = 1; i <= 20; i++) {
-            Ecriture.unEntier(i * i);
+            Ecriture.unEntier(i*i);
             Ecriture.nouvelleLigne();
         }
     }
@@ -59,10 +59,14 @@ public class exercices {
     }
 
     public static void main(String[] args) {
-        //ex311();
-        //ex312();
-        //System.out.println(ex321(6));
-        //System.out.println("T(x=2,e=0.001) = " + ex331(2, 0.001));
-        //System.out.println("Sin(x=2) = " + Math.sin(0.5));
+        System.out.println("Exercice 3.1.1");
+        ex311();
+        System.out.println("Exercice 3.1.2");
+        ex312();
+        System.out.println("Exercice 3.2.1");
+        System.out.println(ex321(6));
+        System.out.println("Exercice 3.3.2");
+        System.out.println("T(x=2,e=0.001) = " + ex331(2, 0.001));
+        System.out.println("Sin(x=2) = " + Math.sin(2));
     }
 }
